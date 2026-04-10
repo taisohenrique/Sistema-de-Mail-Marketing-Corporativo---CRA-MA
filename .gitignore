@@ -7,7 +7,7 @@ env/
 db.sqlite3
 *.db
 
-# Configurações Sensíveis (O mais importante!)
+# Configurações Sensíveis
 .env
 
 # Arquivos temporários do Python
@@ -21,7 +21,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Pasta de arquivos estáticos e media (geralmente não vão para o git)
+# Pasta de arquivos estáticos e media
 /static/
 /media/
 
