@@ -1,0 +1,9 @@
+Django>=4.2
+psycopg2-binary>=2.9  # Conector para o PostgreSQL
+celery>=5.3           # Sistema de filas
+redis>=5.0            # Conector para o Redis
+python-dotenv>=1.0    # Para esconder as senhas
+django-tinymce>=3.6.1
+django-import-export==3.3.8
+openpyxl==3.1.2  # Necessário para ler planilhas do Excel
+python-decouple==3.8

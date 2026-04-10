@@ -1,0 +1,31 @@
+# Ambiente Virtual
+.venv/
+venv/
+env/
+
+# Banco de Dados Local
+db.sqlite3
+*.db
+
+# Configurações Sensíveis (O mais importante!)
+.env
+
+# Arquivos temporários do Python
+__pycache__/
+*.pyc
+
+# Docker
+.docker/
+
+# Arquivos de Sistema
+.DS_Store
+Thumbs.db
+
+# Pasta de arquivos estáticos e media (geralmente não vão para o git)
+/static/
+/media/
+
+# Pasta de volumes do Banco de Dados (Docker)
+postgres_data/
+pgdata/
+data/

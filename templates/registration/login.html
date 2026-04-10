@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso - Sistema CRA-MA</title>
+    <style>
+        /* Reset e Fontes */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            /* Fundo escuro texturizado com gradiente sutil */
+            background: linear-gradient(135deg, #0f1115 0%, #1a1c23 100%); 
+            color: #ffffff; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+
+        /* Container Principal */
+        .login-wrapper {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .box { 
+            background: #1e2029; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); 
+            border: 1px solid #2a2d39;
+            text-align: center; 
+        }
+
+        /* Cabeçalho / Logo Falso */
+        .logo-area {
+            margin-bottom: 30px;
+        }
+        
+        .logo-area h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .logo-area span {
+            color: #3b82f6; /* Azul corporativo */
+        }
+
+        .logo-area p {
+            margin: 5px 0 0 0;
+            font-size: 13px;
+            color: #8b92a5;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Estilização dos campos gerados pelo Django {{ form.as_p }} */
+        .box form p { 
+            margin-bottom: 20px; 
+            text-align: left; 
+        }
+        
+        .box form label { 
+            display: block; 
+            font-size: 12px; 
+            color: #a0a6b5; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+        }
+
+        .box form input { 
+            width: 100%; 
+            padding: 14px; 
+            background: #15171e; 
+            border: 1px solid #2f3342; 
+            color: #ffffff; 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+        }
+
+        .box form input:focus { 
+            border-color: #3b82f6; 
+            outline: none; 
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); 
+            background: #1a1c24;
+        }
+
+        /* Tratamento de Erros e Textos de Ajuda do Django */
+        ul.errorlist { 
+            color: #ef4444; 
+            list-style: none; 
+            padding: 0; 
+            font-size: 12px; 
+            text-align: left; 
+            margin-top: -10px; 
+            margin-bottom: 10px; 
+            font-weight: 600;
+        }
+        .helptext { display: none; } /* Esconde textos de ajuda no login para ficar limpo */
+
+        /* Botão Principal */
+        button { 
+            width: 100%; 
+            padding: 14px; 
+            background: linear-gradient(to right, #2563eb, #3b82f6); 
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        button:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3); 
+        }
+
+        /* Rodapé de Links */
+        .footer-links {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #2a2d39;
+        }
+
+        .footer-links p {
+            font-size: 13px;
+            color: #8b92a5;
+            margin: 0 0 10px 0;
+        }
+
+        .footer-links a { 
+            color: #3b82f6; 
+            text-decoration: none; 
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="box">
+            <div class="logo-area">
+                <h1>CRA<span>-MA</span></h1>
+                <p>Central de Mail Marketing</p>
+            </div>
+            
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Acessar Painel</button>
+            </form>
+            
+            <div class="footer-links">
+                <p>Equipe de Assessoria?</p>
+                <a href="{% url 'registrar' %}">Solicitar novo acesso</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

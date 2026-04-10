@@ -1,0 +1,43 @@
+version: '3.3'
+
+services:
+  # 1. Nosso Banco de Dados (PostgreSQL)
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: mail_marketing
+      POSTGRES_USER: crama_admin
+      POSTGRES_PASSWORD: Th@sf123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+  # 2. Nosso Sistema de Filas (Redis)
+  redis:
+    image: redis:7-alpine
+    restart: always
+
+  # 3. A Aplicação Principal (Django)
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+
+  # 4. O Trabalhador de Fundo (Celery - Quem envia os e-mails)
+  celery:
+    build: .
+    command: celery -A core worker -l INFO
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+
+volumes:
+  postgres_data:
