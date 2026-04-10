@@ -1,4 +1,4 @@
-Sistema de Mail Marketing Corporativo - CRA-MA
+# 📧 Sistema de Mail Marketing Corporativo - CRA-MA
 
 ![Status do Projeto](https://img.shields.io/badge/status-ativo-brightgreen)
 ![Django](https://img.shields.io/badge/Django-5.0+-092e20?logo=django)
